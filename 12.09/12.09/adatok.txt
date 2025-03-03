@@ -1,0 +1,4 @@
+﻿Kovács,Péter,50000,11
+Nagy,Mária,60000,12
+Kis,László,40000,11
+Magyar,János,70000,12

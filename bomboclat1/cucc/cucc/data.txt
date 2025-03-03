@@ -1,0 +1,4 @@
+Kovács,József,Budapest,80000
+Magyar,Mária,Miskolc,90000
+Kis,István,Miskolc,80000
+Magyar,Zsolt,Szeged,70000
