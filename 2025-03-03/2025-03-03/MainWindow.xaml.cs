@@ -35,5 +35,10 @@ namespace _2025_03_03
         {
             this.Close();
         }
+
+        private void szamol_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(int.Parse(textbox1.Text) + int.Parse(textbox2.Text).ToString());
+        }
     }
 }
