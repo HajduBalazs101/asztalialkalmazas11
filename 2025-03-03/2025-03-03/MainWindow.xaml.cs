@@ -20,9 +20,14 @@ namespace _2025_03_03
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<string> lista = new List<string>()
+        {
+            "első","másodi","harmadik"
+        };
         public MainWindow()
         {
             InitializeComponent();
+            listbox1.ItemsSource = lista;
         }
 
         private void ok_Click(object sender, RoutedEventArgs e)
