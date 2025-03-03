@@ -24,5 +24,16 @@ namespace _2025_03_03
         {
             InitializeComponent();
         }
+
+        private void ok_Click(object sender, RoutedEventArgs e)
+        {
+            label1.Content = "OK";
+            MessageBox.Show("OK");
+        }
+
+        private void exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
