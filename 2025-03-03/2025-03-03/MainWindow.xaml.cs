@@ -22,7 +22,7 @@ namespace _2025_03_03
     {
         List<string> lista = new List<string>()
         {
-            "első","másodi","harmadik"
+            "első","második","harmadik"
         };
         public MainWindow()
         {
@@ -44,6 +44,11 @@ namespace _2025_03_03
         private void szamol_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(int.Parse(textbox1.Text) + int.Parse(textbox2.Text).ToString());
+        }
+
+        private void listbox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            label1.Content = listbox1.SelectedItem;
         }
     }
 }
