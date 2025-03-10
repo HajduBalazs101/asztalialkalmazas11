@@ -3,18 +3,29 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:local="clr-namespace:szamologep.wpfapp"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="szam1" HorizontalAlignment="Left" Margin="90,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="szam2" HorizontalAlignment="Left" Margin="244,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="plus" Content="+" HorizontalAlignment="Left" Margin="163,247,0,0" VerticalAlignment="Top" Click="plus_Click"/>
-        <Button x:Name="minus" Content="-" HorizontalAlignment="Left" Margin="225,247,0,0" VerticalAlignment="Top" Click="minus_Click"/>
-        <Button x:Name="multiple" Content="*" HorizontalAlignment="Left" Margin="163,286,0,0" VerticalAlignment="Top" Click="multiple_Click"/>
-        <Button x:Name="divide" Content="/" HorizontalAlignment="Left" Margin="225,286,0,0" VerticalAlignment="Top" Click="divide_Click"/>
         <TextBox x:Name="kimenet" HorizontalAlignment="Left" Margin="163,80,0,0" TextWrapping="Wrap" Text="eredmeny" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="kilep" Content="exit" HorizontalAlignment="Left" Margin="585,286,0,0" VerticalAlignment="Top" Click="kilep_Click"/>
+        <Button x:Name="two" Content="2" HorizontalAlignment="Left" Margin="518,98,0,0" VerticalAlignment="Top" Click="two_Click_1"/>
+        <Button x:Name="three" Content="3" HorizontalAlignment="Left" Margin="563,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.531,0.767" Click="three_Click_1"/>
+        <Button x:Name="one" Content="1" HorizontalAlignment="Left" Margin="473,98,0,0" VerticalAlignment="Top" Click="one_Click_1"/>
+        <Button x:Name="four" Content="4" HorizontalAlignment="Left" Margin="473,123,0,0" VerticalAlignment="Top" Click="four_Click_1"/>
+        <Button x:Name="five" Content="5" HorizontalAlignment="Left" Margin="518,123,0,0" VerticalAlignment="Top" Click="five_Click_1"/>
+        <Button x:Name="six" Content="6" HorizontalAlignment="Left" Margin="563,123,0,0" VerticalAlignment="Top" Click="six_Click_1"/>
+        <Button x:Name="seven" Content="7" HorizontalAlignment="Left" Margin="473,149,0,0" VerticalAlignment="Top" Click="seven_Click_1"/>
+        <Button x:Name="eight" Content="8" HorizontalAlignment="Left" Margin="518,150,0,0" VerticalAlignment="Top" Click="eight_Click_1"/>
+        <Button x:Name="nine" Content="9" HorizontalAlignment="Left" Margin="563,149,0,0" VerticalAlignment="Top" Click="nine_Click_1"/>
+        <TextBox x:Name="tb1" HorizontalAlignment="Left" Margin="463,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="add" Content="Add" HorizontalAlignment="Left" Margin="629,93,0,0" VerticalAlignment="Top" Click="add_Click"/>
+        <Button x:Name="minus" Content="Kivon" HorizontalAlignment="Left" Margin="629,133,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="_out" Content="egyenlo" HorizontalAlignment="Left" Margin="646,170,0,0" VerticalAlignment="Top" Click="_out_Click"/>
+        <Button x:Name="divide" Content="oszt" HorizontalAlignment="Left" Margin="669,93,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="multiply" Content="szoroz" HorizontalAlignment="Left" Margin="669,135,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.889,4.521"/>
 
     </Grid>
 </Window>
