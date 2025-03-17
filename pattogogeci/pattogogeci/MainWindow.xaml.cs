@@ -21,11 +21,12 @@ namespace pattogogeci
     /// </summary>
     public partial class MainWindow : Window
     {
-            int xseb = 100;
-            int yseb = 100;
-            int labdaSzelesseg = 58;
-            int labdaMagassag = 95;
-            int utoSzelesseg = 100;
+        int xseb = 5;
+        int yseb = 5;
+        int labdaSzelesseg = 58;
+        int labdaMagassag = 95;
+        int utoSzelesseg = 100;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -38,9 +39,52 @@ namespace pattogogeci
         private void idoLepes(object sender, EventArgs e)
         {
             // 1. balról és jobbról forduljon vissza
+            if (Canvas.GetLeft(labda) > 1000 - labdaSzelesseg || Canvas.GetLeft(labda) < 0)
+            {
+                xseb = xseb * -1;
+            }
 
-            if (Canvas.GetLeft(labda) > 1000 - labdaSzelesseg || Canvas.GetLeft(labda) < 0) { xseb = xseb * -1; }
-            if (Canvas.GetTop(labda) > 600 - labdaMagassag || Canvas.GetTop(labda) < 0) { yseb = yseb * -1; }
+            if (Canvas.GetTop(labda) > 600 - labdaMagassag || Canvas.GetTop(labda) < 0)
+            {
+                yseb = yseb * -1;
+            }
+
+            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
+            Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
+
+            // 2. fentről és lentről is forduljon vissza
+            if (Canvas.GetTop(labda) > 560 || Canvas.GetTop(labda) < 0)
+            {
+                yseb = yseb * -1;
+            }
+
+            // labda mozgatás
+            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
+            Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
+
+            // 3. ne menjen ki az ütő a szélén
+            var egerPozicio = Mouse.GetPosition(jatekter).X;
+            if (egerPozicio > 0 && egerPozicio < 950)
+            {
+                // ütő mozgatás
+                Canvas.SetLeft(uto, egerPozicio);
+            }
+            // 4. ütközésvizsgálat a labda és az ütő között
+            var utoX = Canvas.GetLeft(uto);
+            var utoY = Canvas.GetTop(uto);
+            var labdaX = Canvas.GetLeft(labda);
+            var labdaY = Canvas.GetTop(labda);
+
+            if (labdaX + labda.Width > utoX
+                && labdaX < utoX + uto.Width
+                && labdaY + labda.Height > utoY
+                && labdaY < utoY + uto.Height
+            )
+            {
+                yseb *= -1;
+            }
+
+            // labda mozgatás
             Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
             Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
         }
