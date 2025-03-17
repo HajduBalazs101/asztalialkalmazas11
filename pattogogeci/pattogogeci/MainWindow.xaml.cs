@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace pattogogeci
 {
@@ -23,6 +24,16 @@ namespace pattogogeci
         public MainWindow()
         {
             InitializeComponent();
+            var ido = new DispatcherTimer();
+            ido.Interval = TimeSpan.FromMilliseconds(1);
+            ido.Tick += idoLepes;
+            ido.Start();
+        }
+
+        private void idoLepes(object sender, EventArgs e)
+        {
+            
+            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + 5);
         }
     }
 }
