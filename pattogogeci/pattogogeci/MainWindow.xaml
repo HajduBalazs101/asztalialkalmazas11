@@ -10,6 +10,7 @@
         <Canvas x:Name="jatekter">
             <Ellipse x:Name="labda" Fill="Blue" Height="58" Canvas.Left="28" Stroke="Black" Canvas.Top="217" Width="58"/>
             <Rectangle x:Name="uto" Fill ="Yellow" Height="14" Canvas.Left="197" Stroke="Black" Canvas.Top="463" Width="183" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.278,0.441"/>
+            <Label x:Name="szamlalo" Content="" Canvas.Left="48" Canvas.Top="62"/>
         </Canvas>
 
     </Grid>

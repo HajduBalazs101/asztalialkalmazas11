@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,7 +27,7 @@ namespace pattogogeci
         int labdaSzelesseg = 58;
         int labdaMagassag = 95;
         int utoSzelesseg = 100;
-
+        int pont = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -82,6 +83,8 @@ namespace pattogogeci
             )
             {
                 yseb *= -1;
+                pont += 1;
+                szamlalo.Content = pont;
             }
 
             // labda mozgatás
