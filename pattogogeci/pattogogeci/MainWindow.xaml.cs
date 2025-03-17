@@ -21,6 +21,11 @@ namespace pattogogeci
     /// </summary>
     public partial class MainWindow : Window
     {
+            int xseb = 100;
+            int yseb = 100;
+            int labdaSzelesseg = 58;
+            int labdaMagassag = 95;
+            int utoSzelesseg = 100;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,8 +37,12 @@ namespace pattogogeci
 
         private void idoLepes(object sender, EventArgs e)
         {
-            
-            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + 5);
+            // 1. balról és jobbról forduljon vissza
+
+            if (Canvas.GetLeft(labda) > 1000 - labdaSzelesseg || Canvas.GetLeft(labda) < 0) { xseb = xseb * -1; }
+            if (Canvas.GetTop(labda) > 600 - labdaMagassag || Canvas.GetTop(labda) < 0) { yseb = yseb * -1; }
+            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
+            Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
         }
     }
 }

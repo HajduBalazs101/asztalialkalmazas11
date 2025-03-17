@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pattogogeci"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <Canvas>
             <Ellipse x:Name="labda" Fill="Blue" Height="58" Canvas.Left="28" Stroke="Black" Canvas.Top="217" Width="58"/>
