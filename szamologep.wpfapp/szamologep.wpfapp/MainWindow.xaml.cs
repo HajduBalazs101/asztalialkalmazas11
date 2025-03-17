@@ -23,15 +23,54 @@ namespace szamologep.wpfapp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private StreamWriter sr;
         private string currentNumber = "";
         private List<int> temp = new List<int>();
-        private string currentOperation = "";
+        private StreamWriter sr;
 
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        private void plus_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = int.Parse(szam1.Text) + int.Parse(szam2.Text);
+            kimenet.Text = eredmeny.ToString();
+
+            sr.WriteLine($"{szam1.Text} + {szam2.Text} = {kimenet.Text}");
+
+        }
+
+        private void minus_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = int.Parse(szam1.Text) - int.Parse(szam2.Text);
+            kimenet.Text = eredmeny.ToString();
+
+            sr.WriteLine($"{szam1.Text} - {szam2.Text} = {kimenet.Text}");
+        }
+
+        private void multiple_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = int.Parse(szam1.Text) * int.Parse(szam2.Text);
+            kimenet.Text = eredmeny.ToString();
+
+            sr.WriteLine($"{szam1.Text} * {szam2.Text} = {kimenet.Text}");
+        }
+
+        private void divide_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = int.Parse(szam1.Text) / int.Parse(szam2.Text);
+            kimenet.Text = eredmeny.ToString();
+
+            sr.WriteLine($"{szam1.Text} / {szam2.Text} = {kimenet.Text}");
+        }
+
+        private void kilep_Click(object sender, RoutedEventArgs e)
+        {
+            sr.Close();
+            Close();
+        }
+
 
         private void one_Click_1(object sender, RoutedEventArgs e)
         {
@@ -87,54 +126,15 @@ namespace szamologep.wpfapp
             tb1.Text = currentNumber;
         }
 
-        private void zero_Click(object sender, RoutedEventArgs e)
-        {
-            currentNumber += "0";
-            tb1.Text = currentNumber;
-        }
-
         private void add_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(currentNumber))
             {
                 temp.Add(int.Parse(currentNumber));
                 currentNumber = "";
+                tb1.Text = "";
             }
-            currentOperation = "+";
-            tb1.Text = "";
-        }
-
-        private void minus_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(currentNumber))
-            {
-                temp.Add(int.Parse(currentNumber));
-                currentNumber = "";
-            }
-            currentOperation = "-";
-            tb1.Text = "";
-        }
-
-        private void multiply_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(currentNumber))
-            {
-                temp.Add(int.Parse(currentNumber));
-                currentNumber = "";
-            }
-            currentOperation = "*";
-            tb1.Text = "";
-        }
-
-        private void divide_Click(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrEmpty(currentNumber))
-            {
-                temp.Add(int.Parse(currentNumber));
-                currentNumber = "";
-            }
-            currentOperation = "/";
-            tb1.Text = "";
+            tb1.Text += "+";
         }
 
         private void _out_Click(object sender, RoutedEventArgs e)
@@ -144,38 +144,10 @@ namespace szamologep.wpfapp
                 temp.Add(int.Parse(currentNumber));
                 currentNumber = "";
             }
-
-            int result = temp.First();  // Kezdjük az első számmal
-            for (int i = 1; i < temp.Count; i++)
-            {
-                switch (currentOperation)
-                {
-                    case "+":
-                        result += temp[i];
-                        break;
-                    case "-":
-                        result -= temp[i];
-                        break;
-                    case "*":
-                        result *= temp[i];
-                        break;
-                    case "/":
-                        if (temp[i] != 0)
-                            result /= temp[i];
-                        else
-                            tb1.Text = "Error: Division by zero!";
-                        break;
-                }
-            }
-
-            tb1.Text = result.ToString();
-            temp.Clear();  // A lista törlése
-        }
-
-        private void kilep_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-            sr.Close();
+            
+            int eredmeny = temp.Sum();
+            tb1.Text = eredmeny.ToString();
+            temp.Clear();
         }
     }
 }
