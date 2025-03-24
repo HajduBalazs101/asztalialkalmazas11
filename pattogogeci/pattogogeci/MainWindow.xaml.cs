@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
@@ -15,7 +18,8 @@ namespace pattogogeci
         int labdaMagassag = 95;
         int utoSzelesseg = 100;
         int pont = 0;
-        int sorokSzama = 2;
+        int sorokSzama = 5;
+        
 
         public MainWindow()
         {
@@ -27,9 +31,11 @@ namespace pattogogeci
                     var tegla = new Image();
                     tegla.Source = new BitmapImage(new Uri("/tegla-removebg-preview.png", UriKind.Relative));
                     tegla.Width = 50;
+                    tegla.Height = 100;
+                    tegla.Stretch = Stretch.Fill;
                     jatekter.Children.Add(tegla);
-                    Canvas.SetLeft(tegla, i * 50);
-                    Canvas.SetTop(tegla, j * 100);
+                    Canvas.SetLeft(tegla, i * 60);
+                    Canvas.SetTop(tegla, j * 110);
                 }
             }
 
@@ -51,8 +57,6 @@ namespace pattogogeci
                 yseb *= -1;
             }
 
-            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
-            Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
 
             var egerPozicio = Mouse.GetPosition(jatekter).X;
             if (egerPozicio >= 0 && egerPozicio <= 900)
@@ -75,30 +79,27 @@ namespace pattogogeci
                 szamlalo.Content = pont;
             }
 
-            for (int j = 0; j < sorokSzama; j++)
+
+            //tegla collision
+            foreach (var tegla in jatekter.Children.OfType<Image>())
             {
-                for (int i = 0; i < 14; i++)
+                var teglaX = Canvas.GetLeft(tegla);
+                var teglaY = Canvas.GetTop(tegla);
+                if (labdaX + labdaSzelesseg > teglaX
+                    && labdaX < teglaX + tegla.Width
+                    && labdaY + labda.Height > teglaY
+                    && labdaY < teglaY + tegla.Height)
                 {
-                    Image tegla;
-                    var aktualiselem = jatekter.Children[j * 14 + i];
-                    if (aktualiselem is Image)
-                    {
-                        tegla = (Image)aktualiselem;
-                        var teglaX = Canvas.GetLeft(tegla);
-                        var teglaY = Canvas.GetTop(tegla);
-                        if (labdaX + labdaSzelesseg > teglaX
-                            && labdaX < teglaX + tegla.Width
-                            && labdaY + labdaMagassag > teglaY
-                            && labdaY < teglaY + tegla.Height)
-                        {
-                            yseb *= -1;
-                            pont++;
-                            szamlalo.Content = pont;
-                            jatekter.Children.Remove(tegla);
-                        }
-                    }
+                    yseb *= -1;
+                    jatekter.Children.Remove(tegla);
+                    pont++;
+                    szamlalo.Content = pont;
+                    break;
                 }
             }
+
+            Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
+            Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
 
         }
     }
