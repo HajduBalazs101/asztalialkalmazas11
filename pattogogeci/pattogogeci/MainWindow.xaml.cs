@@ -28,11 +28,23 @@ namespace pattogogeci
         int labdaMagassag = 95;
         int utoSzelesseg = 100;
         int pont = 0;
+        int sorokSzama = 2;
         public MainWindow()
         {
             InitializeComponent();
-            var tegla = new Image();
-            tegla.Source = new BitmapImage(new Uri("/tegla.jpg", UriKind.Relative));
+            for(var j = 0; j < sorokSzama; j++) { 
+                for(var i = 0; i<int.MaxValue; i++) {
+                
+                var tegla = new Image();
+                tegla.Source = new BitmapImage(new Uri("/tegla-removebg-preview.png", UriKind.Relative));
+                tegla.Width = 50;
+            
+                jatekter.Children.Add(tegla);
+                Canvas.SetLeft(tegla, i*1);
+                Canvas.SetTop(tegla, j*100);
+            }
+            }
+
             var ido = new DispatcherTimer();
             ido.Interval = TimeSpan.FromMilliseconds(1);
             ido.Tick += idoLepes;
@@ -73,7 +85,7 @@ namespace pattogogeci
             if (labdaX + labdaSzelesseg > utoX
                 && labdaX < utoX + utoSzelesseg
                 && labdaY + labdaMagassag > utoY
-                && labdaY < utoY + 20)
+                && labdaY < utoY)
             {
                 yseb *= -1;
                 pont++;
