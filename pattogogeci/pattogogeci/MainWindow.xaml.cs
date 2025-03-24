@@ -1,25 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace pattogogeci
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         int xseb = 5;
@@ -29,20 +16,21 @@ namespace pattogogeci
         int utoSzelesseg = 100;
         int pont = 0;
         int sorokSzama = 2;
+
         public MainWindow()
         {
             InitializeComponent();
-            for(var j = 0; j < sorokSzama; j++) { 
-                for(var i = 0; i<int.MaxValue; i++) {
-                
-                var tegla = new Image();
-                tegla.Source = new BitmapImage(new Uri("/tegla-removebg-preview.png", UriKind.Relative));
-                tegla.Width = 50;
-            
-                jatekter.Children.Add(tegla);
-                Canvas.SetLeft(tegla, i*1);
-                Canvas.SetTop(tegla, j*100);
-            }
+            for (var j = 0; j < sorokSzama; j++)
+            {
+                for (var i = 0; i < 14; i++)
+                {
+                    var tegla = new Image();
+                    tegla.Source = new BitmapImage(new Uri("/tegla-removebg-preview.png", UriKind.Relative));
+                    tegla.Width = 50;
+                    jatekter.Children.Add(tegla);
+                    Canvas.SetLeft(tegla, i * 50);
+                    Canvas.SetTop(tegla, j * 100);
+                }
             }
 
             var ido = new DispatcherTimer();
@@ -53,30 +41,25 @@ namespace pattogogeci
 
         private void idoLepes(object sender, EventArgs e)
         {
-            // Balról és jobbról visszapattanás
             if (Canvas.GetLeft(labda) >= 1000 - labdaSzelesseg || Canvas.GetLeft(labda) <= 0)
             {
                 xseb *= -1;
             }
 
-            // Fentről és lentről visszapattanás
             if (Canvas.GetTop(labda) >= 600 - labdaMagassag || Canvas.GetTop(labda) <= 0)
             {
                 yseb *= -1;
             }
 
-            // Labda mozgatás
             Canvas.SetLeft(labda, Canvas.GetLeft(labda) + xseb);
             Canvas.SetTop(labda, Canvas.GetTop(labda) + yseb);
 
-            // Az ütő mozgatása egérpozíció alapján
             var egerPozicio = Mouse.GetPosition(jatekter).X;
-            if (egerPozicio >= 0 && egerPozicio <= 900) // Figyelembe véve az ütő szélességét
+            if (egerPozicio >= 0 && egerPozicio <= 900)
             {
                 Canvas.SetLeft(uto, egerPozicio);
             }
 
-            // Ütközésvizsgálat
             double utoY = Canvas.GetTop(uto);
             double utoX = Canvas.GetLeft(uto);
             double labdaY = Canvas.GetTop(labda);
@@ -91,7 +74,32 @@ namespace pattogogeci
                 pont++;
                 szamlalo.Content = pont;
             }
-        }
 
+            for (int j = 0; j < sorokSzama; j++)
+            {
+                for (int i = 0; i < 14; i++)
+                {
+                    Image tegla;
+                    var aktualiselem = jatekter.Children[j * 14 + i];
+                    if (aktualiselem is Image)
+                    {
+                        tegla = (Image)aktualiselem;
+                        var teglaX = Canvas.GetLeft(tegla);
+                        var teglaY = Canvas.GetTop(tegla);
+                        if (labdaX + labdaSzelesseg > teglaX
+                            && labdaX < teglaX + tegla.Width
+                            && labdaY + labdaMagassag > teglaY
+                            && labdaY < teglaY + tegla.Height)
+                        {
+                            yseb *= -1;
+                            pont++;
+                            szamlalo.Content = pont;
+                            jatekter.Children.Remove(tegla);
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }
