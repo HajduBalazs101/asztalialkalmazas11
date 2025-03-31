@@ -46,6 +46,17 @@ namespace servergenyoikszde
             }
         }
 
+        private void reg_Click(object sender, RoutedEventArgs e)
+        {
+            if(regpass == regpass2)
+            {
+                MessageBox.Show("A két jelszó megegyezik!");
+            }
+            else
+            {
+                MessageBox.Show("A két jelszó nem egyezik meg!");
+            }
 
+        }
     }
 }

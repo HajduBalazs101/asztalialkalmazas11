@@ -13,6 +13,14 @@
         <Button Content="Belép" HorizontalAlignment="Left" Margin="360,84,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="txtJelszo" HorizontalAlignment="Left" Margin="175,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="lbDebug" Content="" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Regisztráció" HorizontalAlignment="Left" Margin="189,217,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.158,-0.769"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="111,262,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="113,293,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password again" HorizontalAlignment="Left" Margin="111,324,0,0" VerticalAlignment="Top" Width="89"/>
+        <TextBox x:Name="regname" HorizontalAlignment="Left" Margin="189,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="regpass" HorizontalAlignment="Left" Margin="189,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="regpass2" HorizontalAlignment="Left" Margin="214,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="reg" Content="REG" HorizontalAlignment="Left" Margin="360,381,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.65,-0.299" Click="reg_Click"/>
 
     </Grid>
 </Window>
