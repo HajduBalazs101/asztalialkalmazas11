@@ -22,7 +22,7 @@ namespace servergenyoikszde
     public partial class MainWindow : Window
     {
         //kapcsolati string
-        MySqlConnection kapcs = new MySqlConnection("server=localhost;database=asztali_11a;user id=root;password=''");
+        MySqlConnection kapcs = new MySqlConnection("server=127.0.0.1;database=asztali_11a;uid=root;password='';");
         public MainWindow()
         {
             InitializeComponent();
@@ -30,11 +30,22 @@ namespace servergenyoikszde
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-               kapcs.Open();
-            MySqlCommand parancs = kapcs.CreateCommand();
+            kapcs.Open();
+
             var sql = $"SELECT * FROM user WHERE nev = '{txtNev.Text}' AND jelszo = '{txtJelszo.Text}' ;";
+            lbDebug.Content = sql;
+            var parancs = new MySqlCommand(sql, kapcs);
+            var reader = parancs.ExecuteReader();
+            if (reader.Read())
+            {
+                lbDebug.Content = "Sikeres bejelentkezés";            
+            }
+            else
+            {
+                lbDebug.Content = "Sikertelen bejelentkezés";
+            }
         }
 
-        
+
     }
 }

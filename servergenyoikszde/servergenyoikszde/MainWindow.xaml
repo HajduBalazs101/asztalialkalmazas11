@@ -12,6 +12,7 @@
         <TextBox x:Name="txtNev" HorizontalAlignment="Left" Margin="175,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Belép" HorizontalAlignment="Left" Margin="360,84,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox x:Name="txtJelszo" HorizontalAlignment="Left" Margin="175,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lbDebug" Content="" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
