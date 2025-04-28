@@ -53,5 +53,47 @@ namespace hajdub_keszletnyilvantartas
             Betolt();
             kapcs.Close();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var selected = lbTermekek.SelectedItem.ToString();
+            var id = selected.Split(' ')[0];
+            kapcs.Open();
+            var sql = $"DELETE FROM hajdub_termek WHERE id = {id}";
+            var parancs = new MySqlCommand(sql, kapcs);
+            parancs.ExecuteNonQuery();
+            lbTermekek.Items.Clear();
+            Betolt();
+            kapcs.Close();
+        }
+
+        private void lbTermekek_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lbTermekek.SelectedItem != null)
+            { 
+            var selecteditem = lbTermekek.SelectedItem;
+            var resz = selecteditem.ToString().Split(' ');
+            txtSzar1.Text = resz[1];
+            txtSzar2.Text = resz[2];
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (lbTermekek.SelectedItem != null)
+            { 
+            var select = lbTermekek.SelectedItem.ToString();
+            var resz = select.Split(' ');
+            var sql = $"UPDATE hajdub_termek SET cikkszam = '{txtSzar1.Text}', megnevezes = '{txtSzar2.Text}' WHERE id = '{resz[0]}'";
+            var parancs = new MySqlCommand(sql, kapcs);
+            kapcs.Open();
+            parancs.ExecuteNonQuery();
+            lbTermekek.Items.Clear();
+            txtSzar1.Clear();
+            txtSzar2.Clear();
+            Betolt();
+            kapcs.Close();
+            }
+        }
     }
 }

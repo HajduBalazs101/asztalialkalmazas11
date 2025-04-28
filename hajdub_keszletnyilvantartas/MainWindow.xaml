@@ -12,7 +12,11 @@
         <TextBox x:Name="txtCikkszam" HorizontalAlignment="Left" Margin="223,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtMegnevezes" HorizontalAlignment="Left" Margin="223,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button Content="Felvisz" HorizontalAlignment="Left" Margin="168,0,0,0" VerticalAlignment="Center" Click="Button_Click"/>
-        <ListBox x:Name="lbTermekek" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="371,45,179,242"/>
+        <ListBox x:Name="lbTermekek" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="371,45,179,242" SelectionChanged="lbTermekek_SelectionChanged"/>
+        <TextBox x:Name="txtSzar2" HorizontalAlignment="Left" Margin="670,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSzar1" HorizontalAlignment="Left" Margin="670,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Törlés" HorizontalAlignment="Left" Margin="479,202,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="módosit" HorizontalAlignment="Left" Margin="710,197,0,0" VerticalAlignment="Top" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
