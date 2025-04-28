@@ -32,7 +32,7 @@ namespace hajdub_keszletnyilvantartas
         {
             
             var lekerdezes = new MySqlCommand("SELECT * FROM hajdub_termek", kapcs);
-        var reader = lekerdezes.ExecuteReader();
+            var reader = lekerdezes.ExecuteReader();
             while (reader.Read())
             {
                 lbTermekek.Items.Add(reader["id"] + " " + reader["cikkszam"] + " " + reader["megnevezes"]);
